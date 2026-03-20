@@ -120,11 +120,11 @@ def scrape_airbnb(driver):
             pass
     
     final_links = links_matched if links_matched else links_all
-    print(f"  ✓ Found {len(links_all)} Airbnb job links ({len(links_matched)} matched title filters)")
+    print(f"  Found {len(links_all)} Airbnb job links ({len(links_matched)} matched title filters)")
     if links_matched:
-        print(f"    ✓ Using filtered links: {len(final_links)}")
+        print(f"    Using filtered links: {len(final_links)}")
     else:
-        print("    ⚠️ No title-filter matches detected; falling back to unfiltered links.")
+        print("    No title-filter matches detected; falling back to unfiltered links.")
     return [(url, link) for link in final_links]
 
 
@@ -182,11 +182,11 @@ def scrape_stripe(driver):
             pass
     
     final_links = links_matched if links_matched else links_all
-    print(f"  ✓ Found {len(links_all)} Stripe job links ({len(links_matched)} matched title filters)")
+    print(f"  Found {len(links_all)} Stripe job links ({len(links_matched)} matched title filters)")
     if links_matched:
-        print(f"    ✓ Using filtered links: {len(final_links)}")
+        print(f"    Using filtered links: {len(final_links)}")
     else:
-        print("    ⚠️ No title-filter matches detected; falling back to unfiltered links.")
+        print("    No title-filter matches detected; falling back to unfiltered links.")
     return [(url, link) for link in final_links]
 
 
@@ -213,20 +213,26 @@ def scrape_openai(driver):
         scrolls += 1
         time.sleep(1)
     
-    # Extract all job links from Ashby page - more inclusive
-    elements = driver.find_elements(By.TAG_NAME, "a")
+    # Extract job links from Ashby page - limit to anchors that already
+    # contain the OpenAI base path to keep this step fast/reliable.
+    elements = driver.find_elements(By.XPATH, "//a[contains(@href,'ashbyhq.com/openai')]")
     for el in elements:
-        href = el.get_attribute("href")
-        if href and 'ashbyhq.com/openai' in href:
-            # Filter out non-job links (search, filter pages, etc)
-            if any(x not in href.lower() for x in ['#', 'filter', 'search', 'departments']):
-                links_all.add(href)
+        href = el.get_attribute("href") or ""
+        if "ashbyhq.com/openai" not in href:
+            continue
 
-                candidate_text = _get_candidate_text(el)
-                if _matches_job_title_filter(candidate_text):
-                    links_matched.add(href)
+        href_lower = href.lower()
+        # Filter out non-job links (search, filter pages, etc)
+        if any(x in href_lower for x in ["#", "filter", "search", "departments"]):
+            continue
+
+        links_all.add(href)
+
+        candidate_text = _get_candidate_text(el)
+        if _matches_job_title_filter(candidate_text):
+            links_matched.add(href)
     
-    # Also try job containers
+    # Also try job containers (secondary, best-effort)
     job_items = driver.find_elements(By.CSS_SELECTOR, "[data-testid], [class*='job'], [class*='position']")
     for item in job_items:
         try:
@@ -235,31 +241,37 @@ def scrape_openai(driver):
 
             for link in job_links:
                 href = link.get_attribute("href")
-                if href and 'ashbyhq.com/openai' in href:
-                    links_all.add(href)
+                if not href or "ashbyhq.com/openai" not in href:
+                    continue
 
-                    if _matches_job_title_filter(item_text) or _matches_job_title_filter(_get_candidate_text(link)):
-                        links_matched.add(href)
+                href_lower = href.lower()
+                if any(x in href_lower for x in ["#", "filter", "search", "departments"]):
+                    continue
+
+                links_all.add(href)
+
+                if _matches_job_title_filter(item_text) or _matches_job_title_filter(_get_candidate_text(link)):
+                    links_matched.add(href)
         except:
             pass
     
     final_links = links_matched if links_matched else links_all
-    print(f"  ✓ Found {len(links_all)} OpenAI job links ({len(links_matched)} matched title filters)")
+    print(f"  Found {len(links_all)} OpenAI job links ({len(links_matched)} matched title filters)")
     if links_matched:
-        print(f"    ✓ Using filtered links: {len(final_links)}")
+        print(f"    Using filtered links: {len(final_links)}")
     else:
-        print("    ⚠️ No title-filter matches detected; falling back to unfiltered links.")
+        print("    No title-filter matches detected; falling back to unfiltered links.")
     return [(url, link) for link in final_links]
 
 
 def main():
     print("=" * 70)
-    print("🔍 JOB LINKS SCRAPER v2.0")
+    print("JOB LINKS SCRAPER v2.0")
     print("=" * 70)
     
     driver = None
     try:
-        print("\n⏳ Initializing Chrome driver...")
+        print("\nInitializing Chrome driver...")
         driver = get_driver()
         
         all_data = []
@@ -269,28 +281,28 @@ def main():
             airbnb_data = scrape_airbnb(driver)
             all_data.extend(airbnb_data)
         except Exception as e:
-            print(f"  ❌ Error scraping Airbnb: {e}")
+            print(f"  Error scraping Airbnb: {e}")
         
         # Scrape Stripe  
         try:
             stripe_data = scrape_stripe(driver)
             all_data.extend(stripe_data)
         except Exception as e:
-            print(f"  ❌ Error scraping Stripe: {e}")
+            print(f"  Error scraping Stripe: {e}")
         
         # Scrape OpenAI
         try:
             openai_data = scrape_openai(driver)
             all_data.extend(openai_data)
         except Exception as e:
-            print(f"  ❌ Error scraping OpenAI: {e}")
+            print(f"  Error scraping OpenAI: {e}")
         
         driver.quit()
         
         # Save to CSV
         if all_data:
             print(f"\n{'='*70}")
-            print(f"💾 SAVING RESULTS")
+            print("SAVING RESULTS")
             print(f"{'='*70}")
             
             df = pd.DataFrame(all_data, columns=["source_url", "job_link"])
@@ -304,7 +316,7 @@ def main():
             output_path = os.path.join(output_dir, 'job_links.csv')
             df.to_csv(output_path, index=False)
             
-            print(f"\n✅ SUCCESS!")
+            print("\nSUCCESS!")
             print(f"{'='*70}")
             print(f"Total job links:     {len(df)}")
             print(f"Output file:         {output_path}")
@@ -313,10 +325,10 @@ def main():
                 print(f"  • {source.split('/')[-2]}: {count} jobs")
             print(f"{'='*70}")
         else:
-            print("❌ No job links collected!")
+            print("No job links collected!")
             
     except Exception as e:
-        print(f"\n❌ Fatal error: {e}")
+        print(f"\nFatal error: {e}")
     finally:
         if driver:
             try:
