@@ -1,0 +1,6 @@
+selenium==4.15.2
+scrapy==2.11.1
+pandas==2.2.0
+beautifulsoup4==4.12.2
+webdriver-manager==4.0.1
+# python-dotenv==1.0.0  # Optional: for environment variable management

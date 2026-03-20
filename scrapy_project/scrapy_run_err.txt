@@ -1,0 +1,449 @@
+2026-03-20 21:40:02 [scrapy.utils.log] INFO: Scrapy 2.14.2 started (bot: scrapy_project)
+2026-03-20 21:40:02 [scrapy.utils.log] INFO: Versions:
+{'lxml': '6.0.2',
+ 'libxml2': '2.11.9',
+ 'cssselect': '1.4.0',
+ 'parsel': '1.11.0',
+ 'w3lib': '2.4.0',
+ 'Twisted': '25.5.0',
+ 'Python': '3.10.5 (tags/v3.10.5:f377153, Jun  6 2022, 16:14:13) [MSC v.1929 '
+           '64 bit (AMD64)]',
+ 'pyOpenSSL': '25.3.0 (OpenSSL 3.5.5 27 Jan 2026)',
+ 'cryptography': '46.0.5',
+ 'Platform': 'Windows-10-10.0.19045-SP0'}
+2026-03-20 21:40:02 [scrapy.crawler] DEBUG: Using AsyncCrawlerProcess
+2026-03-20 21:40:02 [asyncio] DEBUG: Using selector: SelectSelector
+2026-03-20 21:40:02 [scrapy.addons] INFO: Enabled addons:
+[]
+2026-03-20 21:40:02 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.asyncioreactor.AsyncioSelectorReactor
+2026-03-20 21:40:02 [scrapy.utils.log] DEBUG: Using asyncio event loop: asyncio.windows_events._WindowsSelectorEventLoop
+2026-03-20 21:40:02 [scrapy.extensions.telnet] INFO: Telnet Password: 1087807066dd83bd
+2026-03-20 21:40:02 [scrapy.middleware] INFO: Enabled extensions:
+['scrapy.extensions.corestats.CoreStats',
+ 'scrapy.extensions.logcount.LogCount',
+ 'scrapy.extensions.telnet.TelnetConsole',
+ 'scrapy.extensions.closespider.CloseSpider',
+ 'scrapy.extensions.logstats.LogStats']
+2026-03-20 21:40:02 [scrapy.crawler] INFO: Overridden settings:
+{'BOT_NAME': 'scrapy_project',
+ 'CLOSESPIDER_PAGECOUNT': '10',
+ 'CONCURRENT_REQUESTS_PER_DOMAIN': 1,
+ 'DOWNLOAD_DELAY': 1,
+ 'FEED_EXPORT_ENCODING': 'utf-8',
+ 'NEWSPIDER_MODULE': 'scrapy_project.spiders',
+ 'ROBOTSTXT_OBEY': True,
+ 'SPIDER_MODULES': ['scrapy_project.spiders']}
+2026-03-20 21:40:02 [scrapy.middleware] INFO: Enabled downloader middlewares:
+['scrapy.downloadermiddlewares.offsite.OffsiteMiddleware',
+ 'scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware',
+ 'scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware',
+ 'scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware',
+ 'scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware',
+ 'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware',
+ 'scrapy.downloadermiddlewares.retry.RetryMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware',
+ 'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware',
+ 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware',
+ 'scrapy.downloadermiddlewares.cookies.CookiesMiddleware',
+ 'scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware',
+ 'scrapy.downloadermiddlewares.stats.DownloaderStats']
+2026-03-20 21:40:02 [scrapy.middleware] INFO: Enabled spider middlewares:
+['scrapy.spidermiddlewares.start.StartSpiderMiddleware',
+ 'scrapy.spidermiddlewares.httperror.HttpErrorMiddleware',
+ 'scrapy.spidermiddlewares.referer.RefererMiddleware',
+ 'scrapy.spidermiddlewares.urllength.UrlLengthMiddleware',
+ 'scrapy.spidermiddlewares.depth.DepthMiddleware']
+2026-03-20 21:40:03 [scrapy.middleware] INFO: Enabled item pipelines:
+['scrapy_project.pipelines.JobPipeline']
+2026-03-20 21:40:03 [py.warnings] WARNING: C:\Users\Soban Saqib\AppData\Local\Programs\Python\Python310\lib\site-packages\scrapy\pipelines\__init__.py:41: ScrapyDeprecationWarning: JobPipeline.open_spider() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(pipe.open_spider)
+
+2026-03-20 21:40:03 [py.warnings] WARNING: C:\Users\Soban Saqib\AppData\Local\Programs\Python\Python310\lib\site-packages\scrapy\pipelines\__init__.py:44: ScrapyDeprecationWarning: JobPipeline.close_spider() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(pipe.close_spider)
+
+2026-03-20 21:40:03 [py.warnings] WARNING: C:\Users\Soban Saqib\AppData\Local\Programs\Python\Python310\lib\site-packages\scrapy\pipelines\__init__.py:47: ScrapyDeprecationWarning: JobPipeline.process_item() requires a spider argument, this is deprecated and the argument will not be passed in future Scrapy versions. If you need to access the spider instance you can save the crawler instance passed to from_crawler() and use its spider attribute.
+  self._check_mw_method_spider_arg(pipe.process_item)
+
+2026-03-20 21:40:03 [scrapy.core.engine] INFO: Spider opened
+2026-03-20 21:40:03 [py.warnings] WARNING: C:\Users\Soban Saqib\AppData\Local\Programs\Python\Python310\lib\site-packages\scrapy\core\spidermw.py:490: ScrapyDeprecationWarning: scrapy_project.spiders.job_links_spider.JobLinksSpider defines the deprecated start_requests() method. start_requests() has been deprecated in favor of a new method, start(), to support asynchronous code execution. start_requests() will stop being called in a future version of Scrapy. If you use Scrapy 2.13 or higher only, replace start_requests() with start(); note that start() is a coroutine (async def). If you need to maintain compatibility with lower Scrapy versions, when overriding start_requests() in a spider class, override start() as well; you can use super() to reuse the inherited start() implementation without copy-pasting. See the release notes of Scrapy 2.13 for details: https://docs.scrapy.org/en/2.13/news.html
+  warn(
+
+2026-03-20 21:40:03 [scrapy.extensions.logstats] INFO: Crawled 0 pages (at 0 pages/min), scraped 0 items (at 0 items/min)
+2026-03-20 21:40:03 [scrapy.extensions.telnet] INFO: Telnet console listening on 127.0.0.1:6024
+2026-03-20 21:40:03 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/robots.txt> (referer: None)
+2026-03-20 21:40:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/accounts-receivable-analyst/7369428> (referer: None)
+2026-03-20 21:40:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/accounts-receivable-analyst/7369428>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our '
+                'Controllership team.',
+ 'employment_type': '',
+ 'job_title': 'Accounts Receivable Analyst',
+ 'job_url': 'https://stripe.com/jobs/listing/accounts-receivable-analyst/7369428',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:04 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841> (referer: None)
+2026-03-20 21:40:04 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Platforms (Grower)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-grower/7446841',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:06 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592> (referer: None)
+2026-03-20 21:40:06 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Payments '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Backend Engineer, Payments and Risk',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-payments-and-risk/7232592',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': ['Experience with large-scale financial tracking systems',
+            'Good understanding and practical knowledge in cloud based '
+            'services (e.g. gRPC, GraphQL, Docker/Kubernetes, cloud services '
+            'such as AWS, etc.)']}
+2026-03-20 21:40:07 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-existing-business-iberia/7553751> (referer: None)
+2026-03-20 21:40:07 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-existing-business-iberia/7553751>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Existing Business, Iberia',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-existing-business-iberia/7553751',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:08 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383> (referer: None)
+2026-03-20 21:40:08 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Startup SaaS Platforms - Existing Business',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-startup-saas-platforms-existing-business/7451383',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:09 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/av-builds-and-operations/7675097> (referer: None)
+2026-03-20 21:40:09 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/av-builds-and-operations/7675097>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our '
+                'Infrastructure & Corporate Tech team.',
+ 'employment_type': '',
+ 'job_title': 'AV Builds and Operations',
+ 'job_url': 'https://stripe.com/jobs/listing/av-builds-and-operations/7675097',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:10 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361> (referer: None)
+2026-03-20 21:40:11 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Payments '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Backend Engineer/API, Payments and Risk',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-api-payments-and-risk/4921361',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': ['Experience with large-scale financial tracking systems',
+            'Good understanding and practical knowledge in cloud based '
+            'services (e.g. gRPC, GraphQL, Docker/Kubernetes, cloud services '
+            'such as AWS, etc.)']}
+2026-03-20 21:40:12 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015> (referer: None)
+2026-03-20 21:40:12 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Platforms (Grower)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-grower/7577015',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:13 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-ai-sales/7532733> (referer: None)
+2026-03-20 21:40:13 [scrapy.core.engine] INFO: Closing spider (closespider_pagecount)
+2026-03-20 21:40:13 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-ai-sales/7532733>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, AI Sales',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-ai-sales/7532733',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:15 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-enterprise-hunter-japan/7528816> (referer: None)
+2026-03-20 21:40:15 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-enterprise-hunter-japan/7528816>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Enterprise (Hunter), Japan',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-enterprise-hunter-japan/7528816',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:16 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-product-sales-billing/7393169> (referer: None)
+2026-03-20 21:40:16 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-product-sales-billing/7393169>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Product Sales, Billing',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-product-sales-billing/7393169',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:16 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-product-bnpls/7536063> (referer: None)
+2026-03-20 21:40:17 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-product-bnpls/7536063>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Product - BNPLs',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-product-bnpls/7536063',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:18 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048> (referer: None)
+2026-03-20 21:40:18 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Revenue '
+                '& Financial Automation team.',
+ 'employment_type': '',
+ 'job_title': 'Backend Engineer, Billing/Tax',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-billing-tax/7217048',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:18 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/administrative-business-partner/7680368> (referer: None)
+2026-03-20 21:40:19 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/administrative-business-partner/7680368>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our '
+                'Administrative team.',
+ 'employment_type': '',
+ 'job_title': 'Administrative Business Partner',
+ 'job_url': 'https://stripe.com/jobs/listing/administrative-business-partner/7680368',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:20 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-new-business-france/7242090> (referer: None)
+2026-03-20 21:40:20 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-new-business-france/7242090>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, New Business, France',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-new-business-france/7242090',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:21 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967> (referer: None)
+2026-03-20 21:40:22 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Platforms (Existing Business)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-platforms-existing-business/7576967',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:23 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-enterprise-billing-existing-business/7490597> (referer: None)
+2026-03-20 21:40:23 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-enterprise-billing-existing-business/7490597>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Enterprise - Billing (Existing Business)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-enterprise-billing-existing-business/7490597',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:24 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366> (referer: None)
+2026-03-20 21:40:24 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive (Hunter) , UK Enterprise Retail',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-hunter-uk-enterprise-retail/7451366',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:25 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-product-sales-optimized-checkout/7455982> (referer: None)
+2026-03-20 21:40:25 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-product-sales-optimized-checkout/7455982>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Product Sales, Optimized Checkout',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-product-sales-optimized-checkout/7455982',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:26 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403> (referer: None)
+2026-03-20 21:40:26 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Terminal '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Android Engineer, Terminal OS Platform',
+ 'job_url': 'https://stripe.com/jobs/listing/android-engineer-terminal-os-platform/7557403',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:27 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172> (referer: None)
+2026-03-20 21:40:27 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our '
+                'Infrastructure & Corporate Tech team.',
+ 'employment_type': '',
+ 'job_title': 'Backend Engineer, Core Technology',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-core-technology/6042172',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:28 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513> (referer: None)
+2026-03-20 21:40:28 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our '
+                'Controllership team.',
+ 'employment_type': '',
+ 'job_title': 'AI Solutions Developer, Finance',
+ 'job_url': 'https://stripe.com/jobs/listing/ai-solutions-developer-finance/7646513',
+ 'location': 'Location: Bangalore, India (in-office)',
+ 'posted_date': '',
+ 'skills': ['Build and operationalize AI agents for Finance use cases using '
+            'Agentic Solutions and other automation tools, delivering '
+            'end-to-end solutions from prototype to handoff',
+            'Design reusable knowledge layers, validation patterns, and data '
+            'quality frameworks to improve agent accuracy and reliability '
+            'across multiple use cases',
+            'Identify agentic limitations and new possibilities; collaborate '
+            'with Engineering to scope custom tools and integrations (via MCP) '
+            'when capabilities are insufficient, providing requirements, '
+            'testing implementations, and integrating tools into agent '
+            'workflows',
+            'Work independently to scope automation opportunities, navigate '
+            'platform constraints through creative workarounds (pre-coded '
+            'tools, query chaining, validation agents), and strike a balance '
+            'between speed and quality to deliver impact quickly',
+            'Enable Finance teams through training, documentation (SOPs, '
+            'runbooks), and self-service tooling for minimal ongoing support',
+            'Be the accountable technical expert with Finance SMEs across '
+            'multiple organizations to understand manual processes, translate '
+            'requirements into technical solutions, and iterate based on '
+            'feedback',
+            'Write and optimize SQL queries for data extraction, '
+            'transformation, and validation that feed agent workflows, '
+            'ensuring data quality and accuracy for Finance use cases',
+            'Establish monitoring and observability for deployed agents, '
+            'including metrics, alerting, and incident response processes to '
+            'ensure reliability',
+            'Serve as the escalation point for technical issues, diagnosing '
+            'problems independently and collaborating with Engineering when '
+            'solutions require deeper platform changes',
+            'Document learnings, patterns, and best practice news bulletins '
+            'for reuse across the Finance AI portfolio, contributing to '
+            'organizational knowledge and scaling impact',
+            '3+ years of experience in Data Analytics, Technical Operations, '
+            'Business Intelligence, or similar roles',
+            'Experience with emerging AI/LLM tools, conversational interfaces, '
+            'prompt engineering, or automation platforms and RPA',
+            'Proficiency in SQL including writing complex queries, using CTEs '
+            '(common table expressions), window functions, and joins for data '
+            'analysis and pipeline logic',
+            'Experience with automation through low-code tools, scripting, '
+            'workflow automation, or building custom integrations that extend '
+            'platform capabilities paired with curiosity to learn evolving '
+            'tools',
+            'Track record of independently scoping and delivering technical '
+            'solutions for process improvement, demonstrating self-sufficiency '
+            'and ownership',
+            'Strong analytical and investigative skills to identify root '
+            'causes of data issues, debug complex problems, and resolve '
+            'inconsistencies',
+            'Understanding of development best practices such as version '
+            'control, testing, code reviews, and iterative development',
+            'Familiarity with modern data tools (Python, Databricks, ETL/ELT '
+            'processes, data pipelines) and coding with AI assistance']}
+2026-03-20 21:40:30 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744> (referer: None)
+2026-03-20 21:40:30 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Revenue '
+                '& Financial Automation team.',
+ 'employment_type': '',
+ 'job_title': 'Backend Engineer, Forward Deployed Engineering',
+ 'job_url': 'https://stripe.com/jobs/listing/backend-engineer-forward-deployed-engineering/7249744',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:31 [scrapy.core.engine] DEBUG: Crawled (200) <GET https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700> (referer: None)
+2026-03-20 21:40:31 [scrapy.core.scraper] DEBUG: Scraped from <200 https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700>
+{'company': 'Stripe.com',
+ 'department': '',
+ 'description': 'Help increase the GDP of the internet as part of our Sales '
+                'team.',
+ 'employment_type': '',
+ 'job_title': 'Account Executive, Startup Platforms (Existing Business)',
+ 'job_url': 'https://stripe.com/jobs/listing/account-executive-startup-platforms-existing-business/7339700',
+ 'location': '',
+ 'posted_date': '',
+ 'skills': []}
+2026-03-20 21:40:31 [job_links] INFO: Saved 24 unique job listings to C:\Users\Soban Saqib\Desktop\new_project\data\final\jobs.csv
+2026-03-20 21:40:31 [scrapy.statscollectors] INFO: Dumping Scrapy stats:
+{'downloader/request_bytes': 7904,
+ 'downloader/request_count': 25,
+ 'downloader/request_method_count/GET': 25,
+ 'downloader/response_bytes': 678669,
+ 'downloader/response_count': 25,
+ 'downloader/response_status_count/200': 25,
+ 'elapsed_time_seconds': 28.123986,
+ 'finish_reason': 'closespider_pagecount',
+ 'finish_time': datetime.datetime(2026, 3, 20, 16, 40, 31, 148364, tzinfo=datetime.timezone.utc),
+ 'httpcompression/response_bytes': 4055783,
+ 'httpcompression/response_count': 25,
+ 'item_scraped_count': 24,
+ 'items_per_minute': 51.42857142857143,
+ 'log_count/DEBUG': 49,
+ 'log_count/INFO': 4,
+ 'response_received_count': 25,
+ 'responses_per_minute': 53.57142857142857,
+ 'robotstxt/request_count': 1,
+ 'robotstxt/response_count': 1,
+ 'robotstxt/response_status_count/200': 1,
+ 'scheduler/dequeued': 24,
+ 'scheduler/dequeued/memory': 24,
+ 'scheduler/enqueued': 64,
+ 'scheduler/enqueued/memory': 64,
+ 'start_time': datetime.datetime(2026, 3, 20, 16, 40, 3, 24378, tzinfo=datetime.timezone.utc)}
+2026-03-20 21:40:31 [scrapy.core.engine] INFO: Spider closed (closespider_pagecount)
